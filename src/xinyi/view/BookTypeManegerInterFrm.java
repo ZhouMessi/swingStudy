@@ -98,7 +98,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 		panel.setBorder(new TitledBorder(null, "\u8868\u5355\u64CD\u4F5C", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		prePage = new JButton("\u4E0A\u4E00\u9875");
-//		ÉÏÒ»Ò³
+//		ï¿½ï¿½Ò»Ò³
 		prePage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		
 					paging(e);		
@@ -116,7 +116,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 		
 		currentPage = new JTextField();
 		currentPage.setColumns(10);
-		//³õÊ¼»¯µ±Ç°Ò³Îª1
+		//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ç°Ò³Îª1
 		currentPage.setText("1");
 		
 		JLabel label_1 = new JLabel("\u7B2C");
@@ -288,7 +288,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 		bookTypeTable = new JTable();
 		bookTypeTable.addMouseListener(new MouseAdapter() {
 			@Override
-			//¸ø±í¸ñÌí¼ÓÊó±êµã»÷ÊÂ¼þ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 			public void mousePressed(MouseEvent e) {
 				bookTypeTableMousePressed(e);
 			}
@@ -317,17 +317,17 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 		this.fillTable2(new BookType());
 	}
 	
-	//·­Ò³  (ÉÏÒ»Ò³ÏÂÒ»Ò³ Ìø×ªµ½×Ô¶¨Ò³¶¼ÓÃÕâ¸ö)
+	//ï¿½ï¿½Ò³  (ï¿½ï¿½Ò»Ò³ï¿½ï¿½Ò»Ò³ ï¿½ï¿½×ªï¿½ï¿½ï¿½Ô¶ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	private void paging(ActionEvent e)  {
 		String eveString = e.getActionCommand();
 		int currentPage = Integer.valueOf(this.currentPage.getText());
 		int totalPage = Integer.valueOf(this.totalPage.getText());		
-		//»ñÈ¡²éÑ¯ÐÅÏ¢
+		//ï¿½ï¿½È¡ï¿½ï¿½Ñ¯ï¿½ï¿½Ï¢
 		String s_bookTypeNameString = this.s_bookTypeNameTxt.getText();
 		BookType bookType = new BookType();
 		bookType.setBookTypeName(s_bookTypeNameString);
 		switch (eveString) {
-		case "ÉÏÒ»Ò³":
+		case "ä¸Šä¸€é¡µ":
 			currentPage--;
 			if(currentPage > 1) {
 				this.currentPage.setText(String.valueOf(currentPage));
@@ -340,7 +340,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 				fillTable2(bookType);
 			}
 			break;
-		case "ÏÂÒ»Ò³":
+		case "ä¸‹ä¸€é¡µ":
 			currentPage++;
 			if(currentPage < totalPage) {
 				this.currentPage.setText(String.valueOf(currentPage));
@@ -372,40 +372,40 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 		}
 		   break;
 		default:
-			System.out.println("Ä¬ÈÏ");
+			System.out.println("Ä¬ï¿½ï¿½");
 			break;
 		    }
 	
 		}	
 
 	/**
-	 * Í¼ÊéÀà±ðÉ¾³ý
+	 * Í¼ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	 * @param e
 	 * @throws Exception 
 	 */
 	private void bookTypeDeleteActionEvent(ActionEvent e) throws Exception {
 		String id = idTxt.getText();
 		if(StringUtil.isEmpty(id)) {
-			JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñÐèÒªÉ¾³ýµÄ¼ÇÂ¼");
+			JOptionPane.showMessageDialog(null, "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½Ä¼ï¿½Â¼");
 			return;
 		}
-		int n = JOptionPane.showConfirmDialog(null, "È·¶¨ÒªÉ¾³ý¸Ã¼ÇÂ¼Âð?");
+		int n = JOptionPane.showConfirmDialog(null, "È·ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½Ã¼ï¿½Â¼ï¿½ï¿½?");
 		if(n == 0) {
 			Connection connection = dbUtil.getCon();
 			int deleteNum = bookTypeDao.delete(connection, id);
 			if(deleteNum == 1) {
-				JOptionPane.showMessageDialog(null, "É¾³ý³É¹¦!");
+				JOptionPane.showMessageDialog(null, "É¾ï¿½ï¿½ï¿½É¹ï¿½!");
 				this.resetValue();
 				this.fillTable(new BookType());
 			}else {
-				JOptionPane.showMessageDialog(null, "É¾³ýÊ§°Ü!");
+				JOptionPane.showMessageDialog(null, "É¾ï¿½ï¿½Ê§ï¿½ï¿½!");
 			}
 			try {
 				connection = dbUtil.getCon();
 			} catch (Exception e2) {
 				// TODO: handle exception
 				e2.printStackTrace();
-				JOptionPane.showMessageDialog(null, "É¾³ýÊ§°Ü!");
+				JOptionPane.showMessageDialog(null, "É¾ï¿½ï¿½Ê§ï¿½ï¿½!");
 			}finally {
 				try {
 					dbUtil.closeCon(connection);
@@ -418,7 +418,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 	}
 
 	/**
-	 * Í¼ÊéÀà±ð¸üÐÂ
+	 * Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param e
 	 */
 	private void bookTypeUpdateActionEvent(ActionEvent e) {
@@ -426,7 +426,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 		String bookTypeName = bookTypeNameTxt.getText();
 		String bookTypeDesc = bookTypeDescTxt.getText();
 		if(StringUtil.isEmpty(id)) {
-			JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñÒªÐÞ¸ÄµÄ¼ÇÂ¼");
+			JOptionPane.showMessageDialog(null, "ï¿½ï¿½Ñ¡ï¿½ï¿½Òªï¿½Þ¸ÄµÄ¼ï¿½Â¼");
 			return;
 		}
 		BookType bookType = new BookType(Integer.parseInt(id),bookTypeName,bookTypeDesc);
@@ -435,12 +435,12 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 			con = dbUtil.getCon();
 			int modifyNum = bookTypeDao.update(con, bookType);
 			if(modifyNum == 1 ) {
-				JOptionPane.showMessageDialog(null, "ÐÞ¸Ä³É¹¦");
+				JOptionPane.showMessageDialog(null, "ï¿½Þ¸Ä³É¹ï¿½");
 				this.resetValue();
 				this.fillTable(new BookType());
 				
 			}else {
-				JOptionPane.showMessageDialog(null, "ÐÞ¸ÄÊ§°Ü");
+				JOptionPane.showMessageDialog(null, "ï¿½Þ¸ï¿½Ê§ï¿½ï¿½");
 			}
 		} catch (Exception e2) {
 			// TODO: handle exception
@@ -460,14 +460,14 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 	 * @param e
 	 */
 	private void bookTypeTableMousePressed(MouseEvent evt) {
-		 int row =	bookTypeTable.getSelectedRow();//»ñÈ¡Ñ¡ÖÐµÄÐÐºÅ
-		 idTxt.setText((String)bookTypeTable.getValueAt(row, 0));//¸ù¾ÝÑ¡ÖÐµÄÐÐºÍÁÐ»ñÈ¡¶ÔÓ¦µÄÖµ
+		 int row =	bookTypeTable.getSelectedRow();//ï¿½ï¿½È¡Ñ¡ï¿½Ðµï¿½ï¿½Ðºï¿½
+		 idTxt.setText((String)bookTypeTable.getValueAt(row, 0));//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ðµï¿½ï¿½Ðºï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Ó¦ï¿½ï¿½Öµ
 		 bookTypeNameTxt.setText((String)bookTypeTable.getValueAt(row, 1));
 		 bookTypeDescTxt.setText((String)bookTypeTable.getValueAt(row, 2));
 	}
 
 	/**
-	 * Í¼ÊéÀà±ðËÑË÷ÊÂ¼þ´¦Àí
+	 * Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param e
 	 */
 	private void bookTypeSearchActionPerformed(ActionEvent evt) {
@@ -481,12 +481,12 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 	}
 
 	/**
-	 * ³õÊ¼»¯±í¸ñ
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param bookType
 	 */
 	private void fillTable(BookType bookType) {
 		DefaultTableModel dtm =  (DefaultTableModel)bookTypeTable.getModel();
-		dtm.setRowCount(0);//ÉèÖÃ³É0ÐÐ Çå¿Õ±í¸ñ
+		dtm.setRowCount(0);//ï¿½ï¿½ï¿½Ã³ï¿½0ï¿½ï¿½ ï¿½ï¿½Õ±ï¿½ï¿½
 		Connection con = null;
 		try {
 			con = dbUtil.getCon();
@@ -513,7 +513,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 	
 	private void fillTable2(BookType bookType) {
 		DefaultTableModel dtm =  (DefaultTableModel)bookTypeTable.getModel();
-		dtm.setRowCount(0);//ÉèÖÃ³É0ÐÐ Çå¿Õ±í¸ñ
+		dtm.setRowCount(0);//ï¿½ï¿½ï¿½Ã³ï¿½0ï¿½ï¿½ ï¿½ï¿½Õ±ï¿½ï¿½
 
 	    String currentPage	= (String)this.currentPage.getText();
 		Connection con = null;
@@ -544,7 +544,7 @@ public class BookTypeManegerInterFrm extends JInternalFrame {
 	}
 	
 	/**
-	 * ÖØÖÃ±íµ¥
+	 * ï¿½ï¿½ï¿½Ã±ï¿½
 	 */
 	private void resetValue() {
 		this.idTxt.setText(""); 
